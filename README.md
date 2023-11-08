@@ -11,13 +11,13 @@ git clone smart-cab/react-comps-generator.git
 cd react-comps-generator
 cargo build --release
 ```
-3. add to PATH this file:
+3. add to PATH this directory:
 ```
-react-comps-generator/target/release/react-comps-generator.exe
+react-comps-generator/target/release
 ```
 
 ## Usage
-In your react app go to direactory `src` and run `react-comps-generator`
+In your react app go to directory `src` and run `react-comps-generator`
 
 Then select folder to new component, and type his name.
 Yyyuuhooo! Component Done!
