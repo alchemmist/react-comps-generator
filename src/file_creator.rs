@@ -52,8 +52,8 @@ impl FileCreator {
         let binding = self._element.absolute_path.clone();
         let path_as_vec = binding.split(&spliter).collect::<Vec<_>>();
         [
-            String::from(path_as_vec[path_as_vec.len() - 1]) + &spliter + &self._element.name + ".jsx",
-            String::from(path_as_vec[path_as_vec.len() - 1]) + &self._element.spliter + &self._element.name + ".scss",
+            ".".to_string() + &spliter.to_string() + &String::from(path_as_vec[path_as_vec.len() - 1]) + &spliter + &self._element.name + ".jsx",
+            ".".to_string() + &spliter.to_string() + &String::from(path_as_vec[path_as_vec.len() - 1]) + &self._element.spliter + &self._element.name + ".scss",
         ]    
     }
 }

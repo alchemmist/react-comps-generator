@@ -76,7 +76,6 @@ impl AskParams {
         loop {
             println!("Итак создаю файлы: \n");
             println!("\t{}", _file_names_joined.yellow());
-            println!("\n");
 
             let mut answer = String::new();
             print!("Ok? [y]/n: ");
