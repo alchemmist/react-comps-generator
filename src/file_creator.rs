@@ -1,7 +1,9 @@
 use std::fs::{File, create_dir, OpenOptions};
+use colored::Colorize;
 use std::path::Path;
 use std::io::Write;
 use crate::element::Element;
+use std::process;
 
 
 pub struct FileCreator {
@@ -25,12 +27,22 @@ impl FileCreator {
             create_dir(self._element.absolute_path.clone()).expect("Error while create dir");
         }
 
-        File::create(
-            self._element.absolute_path.clone() + &self._element.spliter + &self._element.name + ".jsx",
-        ).expect("Error encountered while creating file!");
-        File::create(
-            self._element.absolute_path.clone() + &self._element.spliter + &self._element.name + ".scss",
-        ).expect("Error encountered while creating file!");
+        let file = self._element.absolute_path.clone() + &self._element.spliter + &self._element.name;
+        if !Path::new(&(file.clone() + ".jsx")).is_file() && !Path::new(&(file.clone() + ".scss")).is_file(){
+            File::create(
+                file + ".jsx",
+            ).expect("Error encountered while creating file!");
+            File::create(
+                self._element.absolute_path.clone() + &self._element.spliter + &self._element.name + ".scss",
+            ).expect("Error encountered while creating file!");
+        } else {
+            println!("{}\n{}\n{}", 
+                "Есть риск утери информации!".red().bold(), 
+                "Такие файлы уже существуют. Если вы убедились, \nчто в этих файлах нет важной информации,\nудалите их, и повторите операцию создания компонетна.",  
+                "Завершаюсь!"); 
+            process::exit(0)
+        }
+
     }
 
     fn _write_file_contents(&self) {

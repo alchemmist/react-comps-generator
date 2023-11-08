@@ -78,7 +78,7 @@ impl AskParams {
             println!("\t{}", _file_names_joined.yellow());
 
             let mut answer = String::new();
-            print!("Ok? [y]/n: ");
+            print!("\nOk? [y]/n: ");
             let _= stdout().flush();
             stdin().read_line(&mut answer).expect("Failed to read line");
             if let Some('\n')=answer.chars().next_back() {
