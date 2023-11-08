@@ -53,7 +53,7 @@ impl FileCreator {
                     self._element.absolute_path.clone() + &self._element.spliter + &self._element.name + ".jsx",
                 )
             .unwrap();
-        let code = format!("import React from 'react';\nimprt '{}.scss';\n\n\nfunction {}() \n\n\nexport defaulte {};", 
+        let code = format!("import React from 'react';\nimprt '{}.scss';\n\n\nfunction {}() \n\n\nexport default {};", 
             self._element.name, self._element.name, self._element.name);
         // writeln!(file, "ahahahhaha").expect("Error whlie writing to file");
         file.write_all(code.as_bytes()).expect("Error whlie writing to file");
