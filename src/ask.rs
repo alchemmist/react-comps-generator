@@ -46,7 +46,7 @@ impl AskParams {
         println!("В какую папку положем компонент? ");
         loop {
             let mut folder = String::new();
-            print!("c — components, p — pages: ");
+            print!("c — components, p — pages, m - modules: ");
             let _= stdout().flush();
             stdin().read_line(&mut folder).expect("Failed to read line");
             if let Some('\n')=folder.chars().next_back() {
@@ -59,6 +59,7 @@ impl AskParams {
             match folder.as_str() {
                 "c" => return "components".to_string(),
                 "p" => return "pages".to_string(),
+                "m" => return "modules".to_string(),
                 _ => println!("Не понял, попробуй еще раз"),
             }
         }
