@@ -29,7 +29,7 @@ impl AskParams {
     fn _ask_name(&self, base_folder: &String) -> String {
 
         let mut name = String::new();
-        print!("Как назовём компонент? {}/", *base_folder);
+        print!("What do we call the component? {}/", *base_folder);
         let _= stdout().flush();
         stdin().read_line(&mut name).expect("Failed to read line");
         if let Some('\n')=name.chars().next_back() {
@@ -43,7 +43,7 @@ impl AskParams {
     }
 
     fn _ask_folder(&self) -> String {
-        println!("В какую папку положем компонент? ");
+        println!("Which folder should we put the component in? ");
         loop {
             let mut folder = String::new();
             print!("c — components, p — pages, m - modules: ");
@@ -60,7 +60,7 @@ impl AskParams {
                 "c" => return "components".to_string(),
                 "p" => return "pages".to_string(),
                 "m" => return "modules".to_string(),
-                _ => println!("Не понял, попробуй еще раз"),
+                _ => println!("Error, try again!"),
             }
         }
     }
@@ -75,7 +75,7 @@ impl AskParams {
     pub fn ask_ok(&self, file_names: &[String]) {
         let _file_names_joined = file_names.join("\n\t");
         loop {
-            println!("Итак создаю файлы: \n");
+            println!("So I'm creating the files: \n");
             println!("\t{}", _file_names_joined.yellow());
 
             let mut answer = String::new();
@@ -90,10 +90,10 @@ impl AskParams {
             }
             match answer.as_str() {
                 "y" | "" => return (),
-                "n" => {println!("Ничего не создал. Завершаюсь!"); 
+                "n" => {println!("Nothing created. Exit."); 
                         process::exit(0)},
                 _ => {  println!("----------------------------------------------------");
-                        println!("Не понял, попробуй еще раз");
+                        println!("Error, try again!");
                     }
             }
         }
